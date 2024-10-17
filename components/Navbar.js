@@ -40,7 +40,7 @@ export default function Navbar({ enableTransition }) {
         <DrawerContent bgColor="secondary">
           <DrawerCloseButton />
           <DrawerHeader borderBottomWidth="1px">
-            <Bracket>&#123;</Bracket>A<Bracket>&#125;</Bracket>
+            <Bracket>&#123;</Bracket>K<Bracket>&#125;</Bracket>
           </DrawerHeader>
 
           <DrawerBody>
@@ -50,12 +50,12 @@ export default function Navbar({ enableTransition }) {
                   Home
                 </Button>
               </NextLink>
-              <NextLink passHref href="/blog">
+              <NextLink passHref href="/services">
                 <Button as="a" fontSize="16px" variant="ghost">
                   Services
                 </Button>
               </NextLink>
-              <NextLink passHref href="/projects">
+              <NextLink passHref href="/work">
                 <Button as="a" fontSize="16px" variant="ghost">
                   Work
                 </Button>
@@ -65,7 +65,7 @@ export default function Navbar({ enableTransition }) {
                   Blog
                 </Button>
               </NextLink>
-              <NextLink passHref href="/blog">
+              <NextLink passHref href="/contact">
                 <Button as="a" fontSize="16px" variant="ghost">
                   Contact
                 </Button>
@@ -109,7 +109,7 @@ export default function Navbar({ enableTransition }) {
               fontWeight="bold"
               cursor="pointer"
             >
-              <Bracket>&#123;</Bracket>A<Bracket>&#125;</Bracket>
+              <Bracket>&#123;</Bracket>K<Bracket>&#125;</Bracket>
             </Text>
           </NextLink>
           {isLargerThan768 ? (
@@ -119,12 +119,12 @@ export default function Navbar({ enableTransition }) {
                   Home
                 </Button>
               </NextLink>
-              <NextLink passHref href="/projects">
+              <NextLink passHref href="/services">
                 <Button as="a" p="4" fontSize="16px" variant="ghost">
                   Services
                 </Button>
               </NextLink>
-              <NextLink passHref href="/projects">
+              <NextLink passHref href="/work">
                 <Button as="a" p="4" fontSize="16px" variant="ghost">
                   Work
                 </Button>
@@ -134,7 +134,7 @@ export default function Navbar({ enableTransition }) {
                   Blog
                 </Button>
               </NextLink>
-              <NextLink passHref href="/projects">
+              <NextLink passHref href="/contact">
                 <Button as="a" p="4" fontSize="16px" variant="ghost">
                   Contact
                 </Button>

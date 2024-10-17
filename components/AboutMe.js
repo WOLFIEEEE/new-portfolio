@@ -118,7 +118,20 @@ export default function AboutMe() {
               />
               <br />
               <br />
-              When I'm not working, you can find me exploring new technologies, catching up on some coding challenges, or enjoying a game of basketball with friends. 🏀
+              When I'm not working, you can find me exploring new technologies, catching up on some coding challenges, or enjoying a game of Badminton with friends. 🏸
+              <br />
+              <br />
+              Oh, and if you notice a cat in my profile picture, that's <MoreInfo
+                content={
+                  <Image
+                    w={306}
+                    h={306}
+                    alt="Image of Kashi"
+                    src="https://imagizer.imageshack.com/img922/6701/buRceE.jpg"
+                  />
+                }
+                text="Kashi"
+              />. <br /> My feline fried!
             </Text>
 
           </Stack>
