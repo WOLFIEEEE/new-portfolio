@@ -70,59 +70,57 @@ export default function AboutMe() {
               fontSize={{ base: '14px', md: '16px' }}
               whiteSpace="pre-line"
             >
-              Hey! I'm Abdul Rahman, I've been close to a computer since an
-              early age, and been passionate about it ever since. <br />
-              <br /> I really liked to build stuff using{' '}
+              Hey! I'm Khushwant, a passionate accessibility engineer and developer who has been immersed in technology from an early age. My journey began with experimenting with simple coding projects and has evolved into a fulfilling career focused on building accessible web solutions. <br />
+              <br /> I initially explored coding through
               <MoreInfo
-                content="I used to make games without code using RPG Maker VX, and build a simple website with blogspot back in primary school."
-                text="no-code tools"
+                content="I enjoyed creating basic websites and experimenting with various tools to understand how things work behind the scenes."
+                text="self-learning"
               />
-              back in 2010, and from that, I explored how to code myself,
-              fast-forward to today, I do programming in various languages and
-              technologies, and had the privilege to worked in a{' '}
+              back in the day, which led me to deeper explorations of development. Today, I specialize in accessibility, programming in various languages, and have had the opportunity to work in
               <MoreInfo
                 content={
                   <Image
                     w={306}
                     h={102}
-                    alt="linkedin Qneksi"
-                    src="https://imagizer.imageshack.com/a/img923/541/alNCHs.png"
+                    alt="FIS Global Work Experiences"
+                    src="https://imagizer.imageshack.com/img924/3963/CpjxyC.png"
                   />
                 }
-                text="Recruitment Company"
-              />
-              and a
-              <MoreInfo
-                content={
-                  <Image
-                    w={306}
-                    h={102}
-                    alt="linkedin Qasir"
-                    src="https://imagizer.imageshack.com/a/img922/6137/c0cugn.png"
-                  />
-                }
-                text="SaaS Company"
-              />
-              I'm interested in building something awesome with code and
-              automate tasks with code, currently focused on
-              <MoreInfo
-                content="Building Web and Mobile Applications using Javascript Frameworks (React, React Native and Next.js)"
-                text="Web & Mobile Development,"
-              />
-              <MoreInfo
-                content="I really like the idea of contributing new features to open source projects that can be useful to other people."
-                text="Open Source"
+                text="FIS Global"
               />
               and
               <MoreInfo
-                content="Competitive Programming helped me to sharpen my Algorithms and Problem Solving skills."
-                text="Competitive Programming"
+                content={
+                  <Image
+                    w={306}
+                    h={102}
+                    alt="Kalyani Technologies Work Experiences"
+                    src="https://imagizer.imageshack.com/img922/8692/9NJ1rc.png"
+                  />
+                }
+                text="Kalyani Technologies ( Bharat Forge)"
+              />. <br />
+              <br />
+              I'm passionate about ensuring websites are accessible to all users, and I focus on
+              <MoreInfo
+                content="I help businesses comply with accessibility standards like WCAG 2.1 through thorough testing and remediation."
+                text="accessibility testing and remediation,"
+              />
+              as well as developing custom
+              <MoreInfo
+                content="From building custom plugins to themes, I create solutions that meet client needs while being user-friendly and fully accessible."
+                text="WordPress solutions,"
+              />
+              and working with
+              <MoreInfo
+                content="Creating SEO-optimized content and implementing modern technologies in sites such as Gatsby."
+                text="modern web development frameworks."
               />
               <br />
               <br />
-              When I'm not coding I play games with my friends, watch some show
-              on Netflix, or if the weather's good, play basketball! 🏀
+              When I'm not working, you can find me exploring new technologies, catching up on some coding challenges, or enjoying a game of basketball with friends. 🏀
             </Text>
+
           </Stack>
         </SlideUpWhenVisible>
         <SlideUpWhenVisible>
@@ -148,7 +146,7 @@ export default function AboutMe() {
                 objectFit="cover"
                 borderRadius="50%"
                 alt="Abdul Rahman"
-                src="https://i.imgur.com/jk8NmSx.jpeg"
+                src="https://i.imgur.com/n9Htt23.jpg"
               />
             </Box>
           </Flex>

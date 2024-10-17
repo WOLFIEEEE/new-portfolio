@@ -50,14 +50,24 @@ export default function Navbar({ enableTransition }) {
                   Home
                 </Button>
               </NextLink>
+              <NextLink passHref href="/blog">
+                <Button as="a" fontSize="16px" variant="ghost">
+                  Services
+                </Button>
+              </NextLink>
               <NextLink passHref href="/projects">
                 <Button as="a" fontSize="16px" variant="ghost">
-                  Projects
+                  Work
                 </Button>
               </NextLink>
               <NextLink passHref href="/blog">
                 <Button as="a" fontSize="16px" variant="ghost">
                   Blog
+                </Button>
+              </NextLink>
+              <NextLink passHref href="/blog">
+                <Button as="a" fontSize="16px" variant="ghost">
+                  Contact
                 </Button>
               </NextLink>
             </Stack>
@@ -111,12 +121,22 @@ export default function Navbar({ enableTransition }) {
               </NextLink>
               <NextLink passHref href="/projects">
                 <Button as="a" p="4" fontSize="16px" variant="ghost">
-                  Projects
+                  Services
+                </Button>
+              </NextLink>
+              <NextLink passHref href="/projects">
+                <Button as="a" p="4" fontSize="16px" variant="ghost">
+                  Work
                 </Button>
               </NextLink>
               <NextLink passHref href="/blog">
                 <Button as="a" p="4" fontSize="16px" variant="ghost">
                   Blog
+                </Button>
+              </NextLink>
+              <NextLink passHref href="/projects">
+                <Button as="a" p="4" fontSize="16px" variant="ghost">
+                  Contact
                 </Button>
               </NextLink>{' '}
             </Box>

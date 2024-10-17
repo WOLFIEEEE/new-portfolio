@@ -139,14 +139,14 @@ export default function Index({ posts }) {
 
 export async function getStaticProps() {
   const blog = new GithubBlog({
-    repo: 'abdulrcs/abdulrahman.id',
+    repo: 'WOLFIEEEE/new-portfolio',
     token: process.env.GITHUB_TOKEN,
   })
   const posts = await blog.getPosts({
     query: {
-      author: 'abdulrcs',
+      author: 'WOLFIEEEE',
       type: 'post',
-      state: 'published',
+      state: 'published'
     },
     pager: { limit: 10, offset: 0 },
   })

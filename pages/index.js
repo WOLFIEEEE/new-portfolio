@@ -14,11 +14,11 @@ export default function Index({ introduction, projects, articles, contactMe }) {
     <>
       <Container enableTransition={true}>
         <Head>
-          <title>Abdul Rahman - Software Engineer</title>
-          <meta content="Abdul Rahman - Software Engineer" name="title" />
-          <meta content="abdulrcs, abdulrcs website" name="keywords" />
+          <title>Khushwant - Accessibility Engineer</title>
+          <meta content="Khushwant - Accessibility Engineer" name="title" />
+          <meta content="WOLFIEEEE, WOLFIEEEE website" name="keywords" />
           <meta
-            content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
+            content="Software Engineer based in India , an undergraduate student at Universitas Negeri Surabaya."
             name="description"
           />
 
@@ -84,14 +84,12 @@ export async function getStaticProps() {
   })
 
   const blog = new GithubBlog({
-    repo: 'abdulrcs/abdulrahman.id',
+    repo: 'WOLFIEEEE/new-portfolio',
     token: process.env.GITHUB_TOKEN,
   })
   let data2 = await blog.getPosts({
     query: {
-      author: 'abdulrcs',
-      type: 'post',
-      state: 'published',
+      author: 'WOLFIEEEEE',
     },
     pager: { limit: 10, offset: 0 },
   })

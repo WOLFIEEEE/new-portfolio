@@ -62,7 +62,7 @@ export default function Introduction({ introduction }) {
           lineHeight={'95%'}
           letterSpacing={{ sm: '-1.2px', md: '-1.8px' }}
         >
-          Abdul Rahman.
+          Khushwant.
         </Heading>
       </SlideFade>
 
@@ -79,13 +79,15 @@ export default function Introduction({ introduction }) {
           whiteSpace="pre-wrap"
         >
           <Box as="span" color="displayColor">
-            Software Engineer.
+            Accessibility Engineer.
           </Box>{' '}
-          A self-taught developer{' '}
+          Making the world more accessible {' '}
           {isLargerThan800
-            ? 'with an\ninterest in Computer Science.'
-            : 'with an interest in Computer Science.'}
-        </Heading>
+            ? 'one \nweb solution at a time.'
+            : 'one web solution at a time.'}
+        </Heading> 
+
+
       </SlideFade>
 
       <SlideFade
@@ -124,7 +126,7 @@ export default function Introduction({ introduction }) {
         in={true}
       >
         <Stack isInline spacing={4}>
-          <Link href="https://github.com/abdulrcs" isExternal>
+          <Link href="https://github.com/WOLFIEEEE" isExternal>
             <Button
               pos="static"
               color="white"
@@ -135,7 +137,7 @@ export default function Introduction({ introduction }) {
               Github
             </Button>
           </Link>
-          <Link href="https://linkedin.com/in/abdulrcs" isExternal>
+          <Link href="https://linkedin.com/in/WOLFIEEEE" isExternal>
             <Button
               pos="static"
               color="white"
@@ -146,7 +148,7 @@ export default function Introduction({ introduction }) {
               LinkedIn
             </Button>
           </Link>
-          <Link href="mailto:abdulrcs1@gmail.com" isExternal>
+          <Link href="mailto:WOLFIEEEE1@gmail.com" isExternal>
             <Button
               pos="static"
               color="white"
