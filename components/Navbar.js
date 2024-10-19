@@ -50,6 +50,11 @@ export default function Navbar({ enableTransition }) {
                   Home
                 </Button>
               </NextLink>
+              <NextLink passHref href="/experience">
+                <Button as="a" fontSize="16px" variant="ghost">
+                Experience
+                </Button>
+              </NextLink>
               <NextLink passHref href="/services">
                 <Button as="a" fontSize="16px" variant="ghost">
                   Services
@@ -117,6 +122,11 @@ export default function Navbar({ enableTransition }) {
               <NextLink passHref href="/">
                 <Button as="a" p="4" fontSize="16px" variant="ghost">
                   Home
+                </Button>
+              </NextLink>
+              <NextLink passHref href="/experience">
+                <Button as="a" p="4" fontSize="16px" variant="ghost">
+                Experience
                 </Button>
               </NextLink>
               <NextLink passHref href="/services">

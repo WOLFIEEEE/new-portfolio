@@ -1,6 +1,7 @@
 module.exports = {
   images: {
     domains: [
+      'images.ctfassets.net',
       'imagizer.imageshack.com',
       'i.imgur.com',
       'images.unsplash.com',

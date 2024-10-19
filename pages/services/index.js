@@ -1,137 +1,103 @@
-import { useState } from 'react'
-import { Stack, Heading, Text, SimpleGrid, Divider } from '@chakra-ui/react'
+// pages/services/index.jsx
 
-import Cards from '../../components/Card'
-import Container from '../../components/Container'
-import Head from 'next/head'
-import { Input, InputGroup, InputRightElement } from '@chakra-ui/input'
-import { FaSearch } from 'react-icons/fa'
-import { GithubBlog } from '@rena.to/github-blog'
+import { useState } from 'react';
+import { Stack, Heading, Text, SimpleGrid, Divider } from '@chakra-ui/react';
+import ServiceCard from '../../components/Servicecard'; // Ensure correct import
+import Container from '../../components/Container';
+import Head from 'next/head';
+import { Input, InputGroup, InputRightElement } from '@chakra-ui/input';
+import { FaSearch } from 'react-icons/fa';
 
-export default function Projects({ projects }) {
-  const [query, setQuery] = useState('')
+export default function Services({ services }) {
+  const [query, setQuery] = useState('');
+
   const handleChange = (e) => {
-    setQuery(e.target.value)
-  }
+    setQuery(e.target.value);
+  };
+
+  // Helper function to ensure the image URL is absolute
+  const getAbsoluteUrl = (url) => {
+    if (url.startsWith('//')) {
+      return `https:${url}`;
+    }
+    return url;
+  };
 
   return (
     <>
       <Container>
         <Head>
-          <title>Abdul Rahman - Software Engineer</title>
-          <meta content="Abdul Rahman - Software Engineer" name="title" />
-          <meta
-            content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
-            name="description"
-          />
-
-          <meta content="website" property="og:type" />
-          <meta content="https://abdulrahman.id/projects" property="og:url" />
-          <meta
-            content="Abdul Rahman - Software Engineer"
-            property="og:title"
-          />
-          <meta
-            content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
-            property="og:description"
-          />
-          <meta
-            content="https://imagizer.imageshack.com/a/img923/3917/IFUVhm.png"
-            property="og:image"
-          />
-
-          <meta content="summary_large_image" property="twitter:card" />
-          <meta
-            content="https://abdulrahman.id/projects"
-            property="twitter:url"
-          />
-          <meta
-            content="Abdul Rahman - Software Engineer"
-            property="twitter:title"
-          />
-          <meta
-            content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
-            property="twitter:description"
-          />
-          <meta
-            content="https://imagizer.imageshack.com/a/img923/3917/IFUVhm.png"
-            property="twitter:image"
-          />
+          <title>Abdul Rahman - Services</title>
+          {/* ... your meta tags ... */}
         </Head>
         <Stack
-          justifyContent="center"
-          my={{ base: '15vh', md: '16vh' }}
           spacing={10}
+          justifyContent="center"
+          px={['5vw', '10vw']}
+          my={['15vh', '15vh', '22.5vh', '22.5vh']}
         >
           <Stack spacing={5}>
-            {' '}
             <Heading color="displayColor" fontSize={{ base: '4xl', md: '6xl' }}>
-              Projects
+              Services
             </Heading>
             <Text fontSize={{ base: '14px', md: '16px' }}>
-              I love building projects and practice my engineering skills,
-              here's an archive of things that I've worked on.
+              Discover a wide range of services tailored to meet your development
+              and design needs.
             </Text>
             <InputGroup maxW="400px">
-              <InputRightElement pointerEvents="none">
-                <FaSearch />
-              </InputRightElement>
+              <InputRightElement pointerEvents="none" children={<FaSearch />} />
               <Input
-                placeholder="Search projects"
                 type="text"
+                placeholder="Search services"
                 value={query}
                 onChange={handleChange}
               />
             </InputGroup>
             <Divider />
           </Stack>
-          <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
-            {projects
+          <SimpleGrid columns={1} spacing={8}> {/* Set columns to 1 */}
+            {services?.length > 0 && services
               .filter((e) =>
-                e.title.toLowerCase().includes(query.toLowerCase()),
+                e.fields.serviceName
+                  .toLowerCase()
+                  .includes(query.toLowerCase())
               )
-              .map((project) => (
-                <Cards
-                  key={project.title}
-                  desc={project.frontmatter.summary}
-                  imageURL={project.frontmatter.image}
-                  tag={project.frontmatter.techStack
-                    .split(',')
-                    .map((e) => e.trim())}
-                  title={project.title}
-                  slug={project.frontmatter.slug}
+              .map((service) => (
+                <ServiceCard
+                  key={service.fields.serviceName}
+                  imageURL={
+                    getAbsoluteUrl(service.fields.serviceImage?.fields?.file?.url || '')
+                  }
+                  title={service.fields.serviceName || 'Untitled Service'}
+                  desc={service.fields.serviceDescription || 'No description available.'}
+                  // Conditionally render ServiceURL if it exists
+                  serviceUrl={service.fields.serviceURL || ''}
+                  // Conditionally render Technologies if they exist
+                  technologies={service.fields.technologies || []}
+                  // Conditionally render SubServices if they exist
+                  subServices={service.fields.subServices || []}
                 />
               ))}
           </SimpleGrid>
         </Stack>
       </Container>
     </>
-  )
+  );
 }
 
-export async function getStaticProps() {
-  const blog = new GithubBlog({
-    repo: 'WOLFIEEEE/new-portfolio',
-    token: process.env.GITHUB_TOKEN,
-  })
-  const projects = await blog.getPosts({
-    query: {
-      author: 'WOLFIEEEE',
-      type: 'project',
-      state: 'published',
-    },
-    pager: { limit: 100, offset: 0 },
-  })
+const client = require('contentful').createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+});
 
+export async function getStaticProps() {
+  let data = await client.getEntries({
+    content_type: 'services',
+    order: 'fields.order',
+  });
   return {
     props: {
-      projects: projects.edges
-        .sort(
-          (a, b) =>
-            Date.parse(b.post.frontmatter.date) -
-            Date.parse(a.post.frontmatter.date),
-        )
-        .map((e) => e.post),
+      services: data.items.reverse() || [],
     },
-  }
+  };
 }

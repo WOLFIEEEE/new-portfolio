@@ -26,8 +26,9 @@ import {
 import { SiChakraui, SiNextdotjs } from 'react-icons/si'
 import useMediaQuery from '../hook/useMediaQuery'
 import Image from 'next/image'
+import { useRouter } from 'next/router'  // Ensure this is imported
 
-export default function Cards({ imageURL, title, slug, desc, tag }) {
+export default function Cards({ imageURL, title, slug, desc, tag = [] }) {  // Defaulting tag to empty array
   const getTag = (tag) => {
     let values = []
     if (tag == 'React') {
@@ -68,8 +69,10 @@ export default function Cards({ imageURL, title, slug, desc, tag }) {
   }
 
   const isLargerThan800 = useMediaQuery(800)
+  const router = useRouter();  // Using Next.js router for navigation
 
-  const Tags = tag.map((item) => (
+  // Safely handle tags by ensuring it is an array
+  const Tags = Array.isArray(tag) && tag.length > 0 ? tag.map((item) => (
     <Tag
       key={item}
       colorScheme={getTag(item)[0]}
@@ -78,7 +81,8 @@ export default function Cards({ imageURL, title, slug, desc, tag }) {
       <TagLeftIcon as={getTag(item)[1]}></TagLeftIcon>
       <TagLabel>{item}</TagLabel>
     </Tag>
-  ))
+  )) : null;  // If there are no tags, Tags will be null
+
   const handleClick = (event) => {
     ReactGA.event({
       category: 'click',
@@ -136,7 +140,7 @@ export default function Cards({ imageURL, title, slug, desc, tag }) {
                 </Link>
               </Stack>
             </Stack>
-            <Stack isInline>{Tags}</Stack>
+            {Tags && <Stack isInline>{Tags}</Stack>} {/* Render Tags if they exist */}
             <Divider />
             <Text color="textSecondary" fontSize={['sm', 'md']}>
               {desc}
