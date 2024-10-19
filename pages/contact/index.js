@@ -77,9 +77,7 @@ export default function Contact() {
             </Text>
             {/* Contact Form */}
             <form
-              action="https://getform.io/f/bolgxona"
-              method="POST"
-              encType="multipart/form-data"
+              netlify
             >
               <Stack spacing={4}>
                 <FormControl id="name" isRequired>
