@@ -77,7 +77,7 @@ export default function Contact() {
             </Text>
             {/* Contact Form */}
             <form
-              netlify
+              name="contact" method="POST" netlify
             >
               <Stack spacing={4}>
                 <FormControl id="name" isRequired>
