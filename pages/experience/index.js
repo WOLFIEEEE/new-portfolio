@@ -136,7 +136,7 @@ export default function Experience({ experiences, projects, certifications }) {
                       iconStyle={{ background: '#2D3748', color: '#fff' }}
                       icon={<FaBriefcase />}
                     >
-                      <Heading fontSize="xl" color="teal.300">
+                      <Heading fontSize="xl">
                         {experience.title} @ {experience.company}
                       </Heading>
                       <Text color="gray.400" fontSize="sm" mt={2}>
@@ -350,112 +350,92 @@ export default function Experience({ experiences, projects, certifications }) {
 export async function getStaticProps() {
   const experiences = [
     {
-      title: 'Senior Developer',
-      company: 'TechCorp',
-      duration: 'Jan 2020 - Present',
-      location: 'San Francisco, CA',
-      imageURL: '/images/techcorp.png',
+      title: 'Software Test Analyst - 1',
+      company: 'FIS Global',
+      duration: 'June 2022 - Present',
+      location: 'Bengaluru, India',
+      imageURL: '/images/fis_global.png',
       responsibilities: [
-        'Lead a team of 5 developers to build scalable web applications.',
-        'Architect and implement RESTful APIs.',
-        'Collaborate with cross-functional teams to define project requirements.',
+        'Conducted Section 508/WCAG 2.1/2.2 audits for 30+ web and mobile apps in React, Ionic, Angular, and Vue.js, identifying barriers and recommending compliance solutions.',
+        'Collaborated with design and development teams to integrate accessibility into the product lifecycle, resulting in a 50% increase in overall accessibility scores.',
+        'Implemented accessibility-focused frontend strategies like ARIA landmarks, semantic HTML, and optimized keyboard navigation, achieving a 40% performance boost in accessibility scores and Google rankings.',
       ],
-      technologies: ['React', 'Node.js', 'Chakra UI'],
-      projectURL: 'https://techcorp.com/projects/senior-developer',
+      technologies: ['React', 'Angular', 'Ionic', 'Vue.js', 'ARIA'],
+      projectURL: 'https://www.fisglobal.com/',
     },
     {
-      title: 'Frontend Engineer',
-      company: 'DesignStudio',
-      duration: 'Feb 2018 - Dec 2019',
-      location: 'New York, NY',
-      imageURL: '/images/designstudio.png',
+      title: 'Research and Development Intern',
+      company: 'Bharat Forge',
+      duration: 'Feb 2021 - Oct 2021',
+      location: 'Pune, India',
+      imageURL: '/images/bharat_forge.png',
       responsibilities: [
-        'Developed custom components using React.',
-        'Improved user experience by enhancing the UI/UX design.',
-        'Collaborated with the design team to implement pixel-perfect designs.',
+        'Implemented predictive maintenance solutions with real-time dashboards using Node.js, React, Express, and PostgreSQL, improving asset reliability by 25% and projecting $5-6M in annual savings.',
+        'Engineered and launched an automated oxygen delivery device prototype for COVID-19 patients within a 2-week timeframe, integrating 1500+ lines of Arduino code and optimizing oxygen flow efficiency by 40%.',
       ],
-      technologies: ['React', 'Chakra UI', 'Figma'],
-      projectURL: 'https://designstudio.com/projects/frontend-engineer',
-    },
-    {
-      title: 'Junior Developer',
-      company: 'Startup Inc.',
-      duration: 'Jan 2016 - Jan 2018',
-      location: 'Austin, TX',
-      imageURL: '/images/startup.png',
-      responsibilities: [
-        'Assisted in the development of web applications.',
-        'Performed code reviews and debugging.',
-        'Contributed to UI/UX improvements.',
-      ],
-      technologies: ['JavaScript', 'HTML', 'CSS'],
-      projectURL: 'https://startup.com/projects/junior-developer',
+      technologies: ['Node.js', 'React', 'Express', 'PostgreSQL', 'Arduino'],
+      projectURL: 'https://www.bharatforge.com/',
     },
   ];
 
   const projects = [
     {
-      projectName: 'E-commerce Platform',
+      projectName: 'License Manager Plugin',
       projectDescription:
-        'Developed a custom e-commerce platform with integrated payment solutions.',
-      imageURL: '/images/project1.png',
-      technologies: ['React', 'Node.js', 'Stripe', 'MongoDB'],
-      projectURL: 'https://ecommerce-platform.com',
+        'Developed a plugin to streamline license allocation for courses. Admins can define licenses, and users can assign them to team members. Assigned members receive registration links and gain access seamlessly, with sub-accounts reflecting in the user dashboard.',
+      imageURL: '/images/license_manager_plugin.png',
+      technologies: ['WordPress', 'PHP', 'JavaScript', 'WCAG'],
+      projectURL: 'https://adacompliance.net',
     },
     {
-      projectName: 'Portfolio Website',
+      projectName: 'TranscriptHost.com',
       projectDescription:
-        'Created a personal portfolio website for showcasing works and skills.',
-      imageURL: '/images/project2.png',
-      technologies: ['Next.js', 'Chakra UI'],
-      projectURL: 'https://portfolio-website.com',
+        'Built a subscription-based platform enabling users to upload, edit, and share video transcripts with accessible features. Includes custom URL generation for sharing and embedding.',
+      imageURL: '/images/transcript_host.png',
+      technologies: ['React', 'Node.js', 'MongoDB', 'WCAG'],
+      projectURL: 'https://transcripthost.com',
     },
     {
-      projectName: 'Social Media App',
+      projectName: 'Course Selling Website Revamp',
       projectDescription:
-        'Built a social media application with real-time chat and notifications.',
-      imageURL: '/images/project3.png',
-      technologies: ['React Native', 'Firebase'],
-      projectURL: 'https://socialmedia-app.com',
+        'Revamped a course-selling website with a modern design, adding custom-built WordPress elements and enhancing user experience. Optimized for accessibility and usability.',
+      imageURL: '/images/course_selling_revamp.png',
+      technologies: ['WordPress', 'PHP', 'WCAG', 'CSS'],
+      projectURL: 'https://adacompliance.net',
     },
-    // Add more projects as needed
+    {
+      projectName: 'Accessible.org Blog Platform Revamp',
+      projectDescription:
+        'Redesigned the blog platform Accessible.org with a fully accessible and visually appealing interface. Improved navigation, readability, and overall user experience.',
+      imageURL: '/images/accessible_org_revamp.png',
+      technologies: ['React', 'Node.js', 'WCAG', 'ARIA'],
+      projectURL: 'https://accessible.org',
+    },
   ];
 
   const certifications = [
     {
-      certificationName: 'Certified React Developer',
-      issuingOrganization: 'React Institute',
-      issueDate: 'March 2021',
-      certificationURL: 'https://reactinstitute.com/certifications/react-developer',
-      certificationImageURL: '/images/react_certification.png',
+      certificationName: 'Section 508 Trusted Tester',
+      issuingOrganization: 'Department of Homeland Security (DHS)',
+      issueDate: '2022',
+      certificationURL: 'https://www.dhs.gov/trusted-tester',
+      certificationImageURL: '/images/dhs_certification.png',
     },
     {
-      certificationName: 'JavaScript Specialist',
-      issuingOrganization: 'JavaScript Academy',
-      issueDate: 'June 2020',
-      certificationURL: 'https://javascriptacademy.com/certifications/js-specialist',
-      certificationImageURL: '/images/js_certification.png',
+      certificationName: 'Android App Development: Accessibility',
+      issuingOrganization: 'LinkedIn Learning',
+      issueDate: '2021',
+      certificationURL:
+        'https://www.linkedin.com/learning/android-app-development-accessibility',
+      certificationImageURL: '/images/android_accessibility_cert.png',
     },
     {
-      certificationName: 'AWS Certified Solutions Architect',
-      issuingOrganization: 'Amazon Web Services',
-      issueDate: 'September 2019',
-      certificationURL: 'https://aws.amazon.com/certification/',
-      certificationImageURL: '/images/aws_certification.png',
-    },
-    {
-      certificationName: 'Full-Stack Web Developer',
-      issuingOrganization: 'Coursera',
-      issueDate: 'December 2018',
-      certificationURL: 'https://coursera.org/verify/fullstack-web-dev',
-      certificationImageURL: '/images/coursera_certification.png',
-    },
-    {
-      certificationName: 'Responsive Web Design',
-      issuingOrganization: 'freeCodeCamp',
-      issueDate: 'May 2017',
-      certificationURL: 'https://www.freecodecamp.org/certification/responsive-web-design',
-      certificationImageURL: '/images/fcc_certification.png',
+      certificationName: 'iOS App Development: Accessibility',
+      issuingOrganization: 'LinkedIn Learning',
+      issueDate: '2021',
+      certificationURL:
+        'https://www.linkedin.com/learning/ios-app-development-accessibility',
+      certificationImageURL: '/images/ios_accessibility_cert.png',
     },
   ];
 
@@ -467,3 +447,4 @@ export async function getStaticProps() {
     },
   };
 }
+

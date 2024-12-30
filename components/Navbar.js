@@ -60,9 +60,9 @@ export default function Navbar({ enableTransition }) {
                   Services
                 </Button>
               </NextLink>
-              <NextLink passHref href="/work">
+              <NextLink passHref href="/projects">
                 <Button as="a" fontSize="16px" variant="ghost">
-                  Work
+                  Projects
                 </Button>
               </NextLink>
               <NextLink passHref href="/blog">
@@ -134,9 +134,9 @@ export default function Navbar({ enableTransition }) {
                   Services
                 </Button>
               </NextLink>
-              <NextLink passHref href="/work">
+              <NextLink passHref href="/projects">
                 <Button as="a" p="4" fontSize="16px" variant="ghost">
-                  Work
+                  Projects
                 </Button>
               </NextLink>
               <NextLink passHref href="/blog">

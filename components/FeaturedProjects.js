@@ -12,13 +12,23 @@ import Cards from './Card'
 import SlideUpWhenVisible from '../hook/SlideUpWhenVisible'
 import ReactGA from 'react-ga4'
 
+const getAbsoluteUrl = (url) => {
+  if (url.startsWith('//')) {
+    return `https:${url}`;
+  }
+  return url;
+};
+
 export default function FeaturedProjects({ projects }) {
   const handleClick = (event) => {
     ReactGA.event({
       category: 'click',
       action: event,
     })
+
   }
+
+  
 
   return (
     <>
@@ -75,7 +85,9 @@ export default function FeaturedProjects({ projects }) {
             <Cards
               slug={projects[0].fields.slug}
               desc={projects[0].fields.description}
-              imageURL={projects[0].fields.imageUrl}
+              imageURL={
+                getAbsoluteUrl(projects[0].fields.featuredImage?.fields?.file?.url || '')
+              }
               tag={projects[0].fields.tags}
               title={projects[0].fields.title}
             />
@@ -85,7 +97,9 @@ export default function FeaturedProjects({ projects }) {
               <Cards
                 slug={projects[1].fields.slug}
                 desc={projects[1].fields.description}
-                imageURL={projects[1].fields.imageUrl}
+                imageURL={
+                  getAbsoluteUrl(projects[1].fields.featuredImage?.fields?.file?.url || '')
+                }
                 tag={projects[1].fields.tags}
                 title={projects[1].fields.title}
               />
@@ -95,7 +109,9 @@ export default function FeaturedProjects({ projects }) {
             <Cards
               slug={projects[2].fields.slug}
               desc={projects[2].fields.description}
-              imageURL={projects[2].fields.imageUrl}
+              imageURL={
+                getAbsoluteUrl(projects[2].fields.featuredImage?.fields?.file?.url || '')
+              }
               tag={projects[2].fields.tags}
               title={projects[2].fields.title}
             />

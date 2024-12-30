@@ -34,12 +34,24 @@ export default function Post({ metadata, publishedDate, source, toc }) {
 
   const router = useRouter()
   const { slug } = router.query
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/views/${slug}`)
-      .then((res) => res.json())
-      .then((json) => setViews(json.views))
-  }, [slug])
 
+  useEffect(() => {
+    if (!slug) return; // Prevent fetch if slug is undefined
+  
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/views/${slug}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Error: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((json) => setViews(json.views))
+      .catch((error) => {
+        console.error("Failed to fetch views:", error);
+        setViews('N/A');
+      });
+  }, [slug]);
+  
   const [activeId, setActiveId] = useState()
   useEffect(() => {
     const handleScroll = () => {
