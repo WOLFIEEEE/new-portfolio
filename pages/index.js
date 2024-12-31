@@ -23,9 +23,9 @@ export default function Index({ introduction, projects, articles, contactMe }) {
           />
 
           <meta content="website" property="og:type" />
-          <meta content="https://abdulrahman.id" property="og:url" />
+          <meta content="https://khushwantparihar.com" property="og:url" />
           <meta
-            content="Abdul Rahman - Software Engineer"
+            content="Khushwant Parihar - Software Engineer"
             property="og:title"
           />
           <meta
@@ -38,9 +38,9 @@ export default function Index({ introduction, projects, articles, contactMe }) {
           />
 
           <meta content="summary_large_image" property="twitter:card" />
-          <meta content="https://abdulrahman.id/" property="twitter:url" />
+          <meta content="https://khushwantparihar.com/" property="twitter:url" />
           <meta
-            content="Abdul Rahman - Software Engineer"
+            content="Khushwant Parihar - Software Engineer"
             property="twitter:title"
           />
           <meta

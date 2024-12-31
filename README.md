@@ -2,7 +2,7 @@
 
 ---
 
-## ⚡ abdulrahman.id
+## ⚡ khushwantparihar.com
 
 I've decided to open-source my latest portfolio website! it has dynamic content management to add projects and posts using Contentful CMS, and was built using Next.js and Chakra UI.
 
@@ -26,7 +26,7 @@ Create an `.env.local` and follow the variable name based on `.env.example` and 
 > 📌  In this portfolio website, it has 5 Content type which is:  
 > > ~~1. BlogPosts~~  
 > > After the [⚡2.0.0 update](https://github.com/WOLFIEEEE/new-portfolio/pull/17), I use Github Issues as blog content!  
-> > More details about this on: https://abdulrahman.id/blog/unleash-your-dev-blog-write-more-with-github-issues-as-your-cms
+> > More details about this on: https://khushwantparihar.com/blog/unleash-your-dev-blog-write-more-with-github-issues-as-your-cms
 > 2. FeaturedProjects
 > 3. Projects
 > 4. Introduction
@@ -75,7 +75,7 @@ Start the project by `npm run dev` or `yarn dev`
 ### Deployment
 You can deploy easily by using [Vercel](https://vercel.com/) 🎉  
   
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FWOLFIEEEE%2Fabdulrahman.id)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FWOLFIEEEE%2Fkhushwantparihar.com)
 
 ## 📌 Overview
 `pages/index.js` = Homepage  

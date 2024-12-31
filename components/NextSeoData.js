@@ -10,7 +10,7 @@ const NextSeoData = ({ slug, metadata, publishedDate }) => {
           { property: 'twitter:card', content: 'summary_large_image' },
           {
             property: 'twitter:url',
-            content: `https://abdulrahman.id/blog/${slug}`,
+            content: `https://khushwantparihar.com/blog/${slug}`,
           },
           { property: 'twitter:title', content: metadata.title },
           {
@@ -19,16 +19,16 @@ const NextSeoData = ({ slug, metadata, publishedDate }) => {
           },
           { property: 'twitter:image', content: metadata.frontmatter.image },
         ]}
-        canonical={`https://abdulrahman.id/blog/${slug}`}
+        canonical={`https://khushwantparihar.com/blog/${slug}`}
         description={metadata.frontmatter.summary}
         openGraph={{
-          url: `https://abdulrahman.id/blog/${slug}`,
-          site_name: 'Abdul Rahman',
+          url: `https://khushwantparihar.com/blog/${slug}`,
+          site_name: 'Khushwant Parihar',
           title: metadata.title,
           description: metadata.frontmatter.summary,
           type: 'article',
           article: {
-            authors: ['Abdul Rahman'],
+            authors: ['Khushwant Parihar'],
             publishedTime: publishedDate,
             modifiedTime: publishedDate,
             tags: ['Programming', 'Web Development', 'Software Engineering'],
@@ -43,15 +43,15 @@ const NextSeoData = ({ slug, metadata, publishedDate }) => {
         title={metadata.title}
       />
       <ArticleJsonLd
-        authorName="Abdul Rahman"
+        authorName="Khushwant Parihar"
         dateModified={publishedDate}
         datePublished={publishedDate}
         description={metadata.frontmatter.summary}
         images={[metadata.frontmatter.image]}
         publisherLogo="https://imagizer.imageshack.com/a/img923/7612/A5tDeP.png"
-        publisherName="Abdul Rahman"
+        publisherName="Khushwant Parihar"
         title={metadata.title}
-        url={`https://abdulrahman.id/blog/${slug}`}
+        url={`https://khushwantparihar.com/blog/${slug}`}
       />
     </>
   )

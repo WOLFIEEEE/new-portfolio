@@ -126,13 +126,13 @@ export default function Post({ metadata, publishedDate, source, toc }) {
               <Stack alignItems="center" isInline>
                 <Avatar
                   border="1px solid textPrimary"
-                  name="Abdul Rahman"
+                  name="Khushwant Parihar"
                   size="xs"
                   src="https://i.imgur.com/jBZ9o8U.png"
                 />
 
                 <Text color="textPrimary" fontSize={['xs', 'xs', 'sm', 'sm']}>
-                  Abdul Rahman /{' '}
+                  Khushwant Parihar /{' '}
                   {dateFormat(Date.parse(publishedDate), 'mmmm d, yyyy')}
                 </Text>
               </Stack>

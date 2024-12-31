@@ -60,7 +60,7 @@ import {
               </Text>
             </NextLink>
             <Text fontSize="sm" maxW="400px">
-              Software Engineer based in Indonesia. Passionate about building
+              Software Engineer based in India. Passionate about building
               accessible and user-friendly applications.
             </Text>
           </VStack>

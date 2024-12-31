@@ -18,17 +18,17 @@ export default function Projects({ projects }) {
     <>
       <Container>
         <Head>
-          <title>Abdul Rahman - Software Engineer</title>
-          <meta content="Abdul Rahman - Software Engineer" name="title" />
+          <title>Khushwant Parihar - Software Engineer</title>
+          <meta content="Khushwant Parihar - Software Engineer" name="title" />
           <meta
             content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
             name="description"
           />
 
           <meta content="website" property="og:type" />
-          <meta content="https://abdulrahman.id/projects" property="og:url" />
+          <meta content="https://khushwantparihar.com/projects" property="og:url" />
           <meta
-            content="Abdul Rahman - Software Engineer"
+            content="Khushwant Parihar - Software Engineer"
             property="og:title"
           />
           <meta
@@ -42,11 +42,11 @@ export default function Projects({ projects }) {
 
           <meta content="summary_large_image" property="twitter:card" />
           <meta
-            content="https://abdulrahman.id/projects"
+            content="https://khushwantparihar.com/projects"
             property="twitter:url"
           />
           <meta
-            content="Abdul Rahman - Software Engineer"
+            content="Khushwant Parihar - Software Engineer"
             property="twitter:title"
           />
           <meta

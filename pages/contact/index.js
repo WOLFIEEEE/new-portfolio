@@ -21,18 +21,18 @@ export default function Contact() {
     <>
       <Container>
         <Head>
-          <title>Contact - Abdul Rahman</title>
-          <meta content="Contact Abdul Rahman" name="title" />
+          <title>Contact - Khushwant Parihar</title>
+          <meta content="Contact Khushwant Parihar" name="title" />
           <meta
-            content="Get in touch with Abdul Rahman, a Software Engineer based in Indonesia."
+            content="Get in touch with Khushwant Parihar, a Software Engineer based in Indonesia."
             name="description"
           />
 
           <meta content="website" property="og:type" />
-          <meta content="https://abdulrahman.id/contact" property="og:url" />
-          <meta content="Contact - Abdul Rahman" property="og:title" />
+          <meta content="https://khushwantparihar.com/contact" property="og:url" />
+          <meta content="Contact - Khushwant Parihar" property="og:title" />
           <meta
-            content="Get in touch with Abdul Rahman, a Software Engineer based in Indonesia."
+            content="Get in touch with Khushwant Parihar, a Software Engineer based in Indonesia."
             property="og:description"
           />
           <meta
@@ -42,15 +42,15 @@ export default function Contact() {
 
           <meta content="summary_large_image" property="twitter:card" />
           <meta
-            content="https://abdulrahman.id/contact"
+            content="https://khushwantparihar.com/contact"
             property="twitter:url"
           />
           <meta
-            content="Contact - Abdul Rahman"
+            content="Contact - Khushwant Parihar"
             property="twitter:title"
           />
           <meta
-            content="Get in touch with Abdul Rahman, a Software Engineer based in Indonesia."
+            content="Get in touch with Khushwant Parihar, a Software Engineer based in Indonesia."
             property="twitter:description"
           />
           <meta

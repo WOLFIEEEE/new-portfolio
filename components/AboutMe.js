@@ -171,7 +171,7 @@ export default function AboutMe() {
                 h={{ base: '300px', lg: '350px' }}
                 objectFit="cover"
                 borderRadius="50%"
-                alt="Abdul Rahman"
+                alt="Khushwant Parihar"
                 src="https://i.imgur.com/n9Htt23.jpg"
               />
             </Box>

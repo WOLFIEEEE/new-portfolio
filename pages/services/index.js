@@ -27,7 +27,7 @@ export default function Services({ services }) {
     <>
       <Container>
         <Head>
-          <title>Abdul Rahman - Services</title>
+          <title>Khushwant Parihar - Services</title>
           {/* ... your meta tags ... */}
         </Head>
         <Stack
