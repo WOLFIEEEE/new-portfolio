@@ -1,45 +1,53 @@
+// pages/services/[slug].js
+
 import {
   Box,
   Center,
   Divider,
   HStack,
   Heading,
-  Link,
+  Link as ChakraLink, // Renamed to avoid confusion with "next/link"
   Spinner,
   Stack,
   Text,
+  Button,
 } from '@chakra-ui/react'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { useEffect, useState } from 'react'
-
 import ReactGA from 'react-ga4'
-
 import mdxPrism from 'mdx-prism'
-
 import readingTime from 'reading-time'
-
 import { useRouter } from 'next/router'
 import Container from '../../components/Container'
 import MDXComponents from '../../components/MDXComponents'
-import ProjectContainer from '../../components/ProjectContainer'
-
+import ServiceContainer from '../../components/ProjectContainer'
 import { GithubBlog } from '@rena.to/github-blog'
-
-import { FaGithub, FaLink, FaPersonBooth, FaUser } from 'react-icons/fa'
+import { FaLink, FaUser } from 'react-icons/fa'
 import NextSeoData from '../../components/NextSeoData'
 import useUtterances from '../../hook/useUtterances'
 import Image from 'next/image'
 
-export default function Post({ metadata, publishedDate, source, toc }) {
+export default function Service({ metadata, publishedDate, source, toc }) {
   const [views, setViews] = useState('...')
-
   const router = useRouter()
   const { slug } = router.query
+
   useEffect(() => {
+    if (!slug) return
+
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/views/${slug}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Error: ${res.status}`)
+        }
+        return res.json()
+      })
       .then((json) => setViews(json.views))
+      .catch((error) => {
+        console.error('Failed to fetch views:', error)
+        setViews('N/A')
+      })
   }, [slug])
 
   const [activeId, setActiveId] = useState()
@@ -83,94 +91,81 @@ export default function Post({ metadata, publishedDate, source, toc }) {
         publishedDate={publishedDate}
       />
 
-      <Container>
-        <Stack>
-          <Stack
-            mx="auto"
-            mt="73px"
+      {/** Added pt={8} for nice padding on top */}
+      <Container pt={20}>
+        <Stack
+          direction={{ base: 'column', md: 'row' }}
+          align={{ base: 'flex-start', md: 'center' }}
+          spacing={6}
+          mt="73px"
+        >
+          <Box
+            flex="1"
+            maxW={{ base: '100%', md: '200px' }} // smaller image
             border="1px"
             borderColor={{ base: '#333', md: 'borderColor' }}
             borderRadius="10px"
+            overflow="hidden"
           >
             <Image
-              width={1366}
-              height={768}
+              width={200}
+              height={140}
               objectFit="cover"
-              style={{
-                borderRadius: '10px',
-              }}
               alt=""
               priority
               src={metadata.frontmatter.image}
               blurDataURL={metadata.frontmatter.image}
             />
-          </Stack>
+          </Box>
 
-          <Stack pt={4}>
+          <Stack flex="2" spacing={3}>
             <Heading
               as="h1"
               color="displayColor"
-              fontSize={['3xl', '3xl', '5xl', '5xl']}
+              fontSize={['2xl', '2xl', '4xl', '4xl']}
             >
               {metadata.title}
             </Heading>
-            <Text color="textPrimary" fontSize={['xs', 'xs', 'sm', 'sm']}>
+
+            <Text color="textPrimary" fontSize={['sm', 'sm', 'md', 'md']}>
               {metadata.frontmatter.summary}
             </Text>
-            <HStack spacing={2}>
-              <Text color="textPrimary" fontSize={['xs', 'xs', 'sm', 'sm']}>
+
+            <HStack spacing={4}>
+              <Text color="textPrimary" fontSize="sm">
                 {views} views
               </Text>
-              {metadata.frontmatter.githubLink && (
-                <>
-                  <Text>-</Text>
-                  <HStack alignItems="center">
-                    <FaGithub fontSize="20px" />
-                    <Link
-                      fontSize={['xs', 'xs', 'sm', 'sm']}
-                      href={metadata.frontmatter.githubLink}
-                      isExternal
-                      onClick={() => handleClick(`${metadata.title}_github`)}
-                    >
-                      Github
-                    </Link>
-                  </HStack>
-                </>
-              )}
-
-              {metadata.frontmatter.deployLink && (
-                <>
-                  <Text>-</Text>
-                  <HStack>
-                    <FaLink fontSize="18px" />
-                    <Link
-                      fontSize={['xs', 'xs', 'sm', 'sm']}
-                      href={metadata.frontmatter.deployLink}
-                      isExternal
-                      onClick={() => handleClick(`${metadata.title}_livesite`)}
-                    >
-                      Live Site
-                    </Link>
-                  </HStack>
-                </>
-              )}
-            </HStack>
-            <HStack>
-              <FaUser fill="#D1D5DB" fontSize="14px" />
-              <Text color="#D1D5DB" fontSize={['xs', 'xs', 'sm', 'sm']}>
-                {metadata.frontmatter.category}
-              </Text>
+              <HStack>
+                <FaUser fill="#D1D5DB" fontSize="14px" />
+                <Text color="#D1D5DB" fontSize="sm">
+                  {metadata.frontmatter.category}
+                </Text>
+              </HStack>
             </HStack>
           </Stack>
-
-          <Divider h="0.5px" my={4} bg="textSecondary" />
         </Stack>
+
+        <Divider h="0.5px" my={6} bg="textSecondary" />
+
+        {metadata.frontmatter.deployLink && (
+          <HStack mb={4}>
+            <FaLink fontSize="18px" />
+            <ChakraLink
+              fontSize="sm"
+              href={metadata.frontmatter.deployLink}
+              isExternal
+              onClick={() => handleClick(`${metadata.title}_livesite`)}
+            >
+              Live Site
+            </ChakraLink>
+          </HStack>
+        )}
 
         <HStack alignItems="start" pt="23px" spacing="36px">
           <Stack w={{ base: '100%', md: '50rem' }}>
-            <ProjectContainer>
+            <ServiceContainer>
               <MDXRemote {...source} components={MDXComponents} />
-            </ProjectContainer>
+            </ServiceContainer>
           </Stack>
 
           <Stack
@@ -183,11 +178,9 @@ export default function Post({ metadata, publishedDate, source, toc }) {
             <Text color="displayColor" fontSize="xl" fontWeight="semibold">
               Table of Contents
             </Text>
-
             {toc.map((heading) => (
               <Box key={heading.title} pl={`${heading.level * 1}rem`}>
                 <Text
-                  key={heading.id}
                   color={
                     heading.title === activeId ? 'activeColor' : 'textSecondary'
                   }
@@ -203,18 +196,33 @@ export default function Post({ metadata, publishedDate, source, toc }) {
           </Stack>
         </HStack>
 
-        <Stack w="100%" mt="36px" mb="15vh">
-          {isCommentsLoading && (
-            <Center flexDir="column" pt={8}>
-              <Spinner w="56px" h="56px" color="#058d92" thickness="5px" />
-              <Text pt={2} color="textSecondary" fontSize="sm">
-                Loading comments...
-              </Text>
-            </Center>
-          )}
-          <Stack opacity={isCommentsLoading ? 0 : 1}>
-            <div id="comments" />
-          </Stack>
+        {/** Contact section below the content */}
+        <Stack
+          spacing={3}
+          p={4}
+          my={6}
+          borderWidth="1px"
+          borderRadius="md"
+          borderColor="borderColor"
+        >
+          <Text fontSize="md" fontWeight="semibold">
+            Interested in discussing further?
+          </Text>
+          <Text fontSize="sm" color="textSecondary">
+            Please contact me if you want to discuss this service or have any
+            questions. I’d be happy to help!
+          </Text>
+          <Box>
+            <Button
+              colorScheme="teal"
+              onClick={() => {
+                handleClick(`${metadata.title}_contact_me`)
+                router.push('/contact') // Internal navigation without refresh
+              }}
+            >
+              Contact Me
+            </Button>
+          </Box>
         </Stack>
       </Container>
     </>
@@ -230,10 +238,10 @@ export async function getStaticPaths() {
   const data = await blog.getPosts({
     query: {
       author: 'WOLFIEEEE',
-      type: 'project',
+      type: 'service',
       state: 'published',
     },
-    pager: { limit: 10, offset: 0 },
+    pager: { limit: 100, offset: 0 },
   })
 
   return {
@@ -249,32 +257,36 @@ export async function getStaticProps({ params }) {
     repo: 'WOLFIEEEE/new-portfolio',
     token: process.env.GITHUB_TOKEN,
   })
+
   const data = await blog.getPost({
     query: {
       author: 'WOLFIEEEE',
       search: params.slug,
+      type: 'service',
     },
   })
-  const article = data.post
-  const source = article.body
-  article.readingTime = readingTime(source).text
+
+  const service = data.post
+  const source = service.body
+  service.readingTime = readingTime(source).text
+
   const mdxSource = await serialize(source, {
     mdxOptions: {
       rehypePlugins: [mdxPrism],
     },
   })
 
-  const headings = source.match(/#{2,4} .+/g)
+  const headings = source.match(/#{2,4} .+/g) || []
   const toc = headings.map((heading) => {
     const level = heading.match(/#/g).length - 2
-    const title = heading.replace(/#{2,4} /, '')
+    const title = heading.replace(/#{2,4} /, '').trim()
     return { title, level }
   })
 
   return {
     props: {
-      metadata: article,
-      publishedDate: new Date(article.frontmatter.date).toISOString(),
+      metadata: service,
+      publishedDate: new Date(service.frontmatter.date).toISOString(),
       source: mdxSource,
       toc: toc,
     },

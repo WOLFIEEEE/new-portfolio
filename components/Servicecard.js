@@ -122,8 +122,8 @@ import {
             {/* Image Section */}
             <Box flexShrink={0} width={{ base: '100%', md: '40%' }}>
               <Image
-                width={800}
-                height={400}
+                width={300}
+                height={150}
                 layout="responsive"
                 objectFit="cover"
                 alt={title}

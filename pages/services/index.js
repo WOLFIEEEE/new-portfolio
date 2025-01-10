@@ -1,103 +1,101 @@
-// pages/services/index.jsx
+// pages/services/index.js
 
-import { useState } from 'react';
-import { Stack, Heading, Text, SimpleGrid, Divider } from '@chakra-ui/react';
-import ServiceCard from '../../components/Servicecard'; // Ensure correct import
-import Container from '../../components/Container';
-import Head from 'next/head';
-import { Input, InputGroup, InputRightElement } from '@chakra-ui/input';
-import { FaSearch } from 'react-icons/fa';
+import { useState } from 'react'
+import { Stack, Heading, Text, SimpleGrid, Divider } from '@chakra-ui/react'
+import ServiceCard from '../../components/Servicecard' // Import your ServiceCard
+import Container from '../../components/Container'
+import Head from 'next/head'
+import { Input, InputGroup, InputRightElement } from '@chakra-ui/input'
+import { FaSearch } from 'react-icons/fa'
+import { GithubBlog } from '@rena.to/github-blog'
 
 export default function Services({ services }) {
-  const [query, setQuery] = useState('');
-
+  const [query, setQuery] = useState('')
+  
   const handleChange = (e) => {
-    setQuery(e.target.value);
-  };
-
-  // Helper function to ensure the image URL is absolute
-  const getAbsoluteUrl = (url) => {
-    if (url.startsWith('//')) {
-      return `https:${url}`;
-    }
-    return url;
-  };
+    setQuery(e.target.value)
+  }
 
   return (
     <>
       <Container>
         <Head>
-          <title>Khushwant Parihar - Services</title>
-          {/* ... your meta tags ... */}
+          <title>Services - Khushwant Parihar</title>
+          <meta name="title" content="Services - Khushwant Parihar" />
+          <meta
+            name="description"
+            content="Explore the range of services offered by Khushwant Parihar, a Software Engineer based in Indonesia."
+          />
+          {/* Add additional SEO meta tags as needed */}
         </Head>
         <Stack
-          spacing={10}
           justifyContent="center"
-          px={['5vw', '10vw']}
-          my={['15vh', '15vh', '22.5vh', '22.5vh']}
+          my={{ base: '15vh', md: '16vh' }}
+          spacing={10}
         >
           <Stack spacing={5}>
             <Heading color="displayColor" fontSize={{ base: '4xl', md: '6xl' }}>
               Services
             </Heading>
             <Text fontSize={{ base: '14px', md: '16px' }}>
-              Discover a wide range of services tailored to meet your development
-              and design needs.
+              I offer a variety of services to help you build and scale your projects. Explore the services below to find out how I can assist you.
             </Text>
             <InputGroup maxW="400px">
-              <InputRightElement pointerEvents="none" children={<FaSearch />} />
+              <InputRightElement pointerEvents="none">
+                <FaSearch />
+              </InputRightElement>
               <Input
-                type="text"
                 placeholder="Search services"
+                type="text"
                 value={query}
                 onChange={handleChange}
               />
             </InputGroup>
             <Divider />
           </Stack>
-          <SimpleGrid columns={1} spacing={8}> {/* Set columns to 1 */}
-            {services?.length > 0 && services
-              .filter((e) =>
-                e.fields.serviceName
-                  .toLowerCase()
-                  .includes(query.toLowerCase())
+          <SimpleGrid columns={{ sm: 1, md: 1 }} spacing={8}>
+            {services
+              .filter((service) =>
+                service.title.toLowerCase().includes(query.toLowerCase()),
               )
               .map((service) => (
                 <ServiceCard
-                  key={service.fields.serviceName}
-                  imageURL={
-                    getAbsoluteUrl(service.fields.serviceImage?.fields?.file?.url || '')
-                  }
-                  title={service.fields.serviceName || 'Untitled Service'}
-                  desc={service.fields.serviceDescription || 'No description available.'}
-                  // Conditionally render ServiceURL if it exists
-                  serviceUrl={service.fields.serviceURL || ''}
-                  // Conditionally render Technologies if they exist
-                  technologies={service.fields.technologies || []}
-                  // Conditionally render SubServices if they exist
-                  subServices={service.fields.subServices || []}
+                  key={service.title}
+                  desc={service.frontmatter.summary}
+                  imageURL={service.frontmatter.image}
+                  tag={service.frontmatter.techStack
+                    .split(',')
+                    .map((e) => e.trim())}
+                  title={service.title}
+                  slug={service.frontmatter.slug}
+                  subServices={service.frontmatter.subServices || []} // Assuming you have subServices in frontmatter
                 />
               ))}
           </SimpleGrid>
         </Stack>
       </Container>
     </>
-  );
+  )
 }
 
-const client = require('contentful').createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-});
-
 export async function getStaticProps() {
-  let data = await client.getEntries({
-    content_type: 'services',
-    order: 'fields.order',
-  });
+  const blog = new GithubBlog({
+    repo: 'WOLFIEEEE/new-portfolio',
+    token: process.env.GITHUB_TOKEN,
+  })
+  
+  const servicesData = await blog.getPosts({
+    query: {
+      author: 'WOLFIEEEE',
+      type: 'service', // Ensure your services are tagged as 'service'
+      state: 'published',
+    },
+    pager: { limit: 100, offset: 0 },
+  })
+
   return {
     props: {
-      services: data.items.reverse() || [],
+      services: servicesData.edges.map((e) => e.post),
     },
-  };
+  }
 }
