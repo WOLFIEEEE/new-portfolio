@@ -1,3 +1,5 @@
+// components/ContactMe.js
+
 import {
   Button,
   chakra,
@@ -11,11 +13,11 @@ import {
   SimpleGrid,
   Select,
 } from '@chakra-ui/react';
-import SlideUpWhenVisible from '../hook/SlideUpWhenVisible';
-import ReactGA from 'react-ga4';
 import { useState } from 'react';
+import ReactGA from 'react-ga4';
+import SlideUpWhenVisible from '../hook/SlideUpWhenVisible';
 
-export default function ContactMeForm() {
+export default function ContactMe() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,7 +33,7 @@ export default function ContactMeForm() {
     <Stack
       alignItems="center"
       justifyContent="center"
-      w="100%"  // Ensure the parent container takes the full width
+      w="100%"
       spacing={10}
       p={8}
       bg="black"
@@ -39,7 +41,11 @@ export default function ContactMeForm() {
       minH="100vh"
     >
       <SlideUpWhenVisible>
-        <Heading fontSize={{ base: '4xl', md: '5xl' }} textAlign="center" color="teal.300">
+        <Heading
+          fontSize={{ base: '4xl', md: '5xl' }}
+          textAlign="center"
+          color="teal.300"
+        >
           Get in Touch
         </Heading>
       </SlideUpWhenVisible>
@@ -52,19 +58,23 @@ export default function ContactMeForm() {
           maxW="600px"
           mx="auto"
         >
-          I would love to hear from you! If you have any questions or need any service, please fill out the form below and I'll get back to you as soon as possible.
+          I would love to hear from you! If you have any questions or need any service, 
+          please fill out the form below and I'll get back to you as soon as possible.
         </Text>
       </SlideUpWhenVisible>
 
       <SlideUpWhenVisible>
         <chakra.form
-          action="https://getform.io/f/bolgxona"
-          method="POST"
-          w="100%"  // Ensures the form takes the full available width
+          // Use 100% width, but cap at 1200px, and center it
+          w="100%"
+          maxW="1200px"
+          mx="auto"
           p={6}
           bg="gray.900"
           borderRadius="lg"
           boxShadow="lg"
+          action="https://getform.io/f/bolgxona"
+          method="POST"
         >
           <Stack spacing={8}>
             {/* Name and Email in the same row */}
@@ -85,7 +95,7 @@ export default function ContactMeForm() {
                   focusBorderColor="teal.400"
                   color="white"
                   _placeholder={{ color: 'gray.500' }}
-                  w="100%" // Ensure inputs take the full width of their container
+                  w="100%"
                 />
               </FormControl>
 
@@ -106,12 +116,12 @@ export default function ContactMeForm() {
                   focusBorderColor="teal.400"
                   color="white"
                   _placeholder={{ color: 'gray.500' }}
-                  w="100%"  // Ensure inputs take the full width of their container
+                  w="100%"
                 />
               </FormControl>
             </SimpleGrid>
 
-            {/* Service Combobox */}
+            {/* Service Dropdown */}
             <FormControl isRequired>
               <FormLabel htmlFor="service" fontWeight="bold" color="teal.200">
                 What service do you need help with?
@@ -128,7 +138,7 @@ export default function ContactMeForm() {
                 focusBorderColor="teal.400"
                 color="white"
                 _placeholder={{ color: 'gray.500' }}
-                w="100%"  // Ensure the select takes full width
+                w="100%"
               >
                 <option value="WordPress Development">WordPress Development</option>
                 <option value="WordPress Plugin Development">WordPress Plugin Development</option>
@@ -162,7 +172,7 @@ export default function ContactMeForm() {
                 focusBorderColor="teal.400"
                 color="white"
                 _placeholder={{ color: 'gray.500' }}
-                w="100%"  // Ensure textarea takes full width
+                w="100%"
               />
             </FormControl>
 

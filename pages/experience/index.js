@@ -136,7 +136,7 @@ export default function Experience({ experiences, projects, certifications }) {
                       iconStyle={{ background: '#2D3748', color: '#fff' }}
                       icon={<FaBriefcase />}
                     >
-                      <Heading fontSize="xl">
+                      <Heading fontSize="xl" color={'white !important'}>
                         {experience.title} @ {experience.company}
                       </Heading>
                       <Text color="gray.400" fontSize="sm" mt={2}>
@@ -170,7 +170,7 @@ export default function Experience({ experiences, projects, certifications }) {
                           <img
                             src={getAbsoluteUrl(experience.imageURL)}
                             alt={`${experience.company} logo`}
-                            style={{ maxWidth: '100%', borderRadius: '8px' }}
+                            style={{ backgroundColor:'white',maxWidth: '100%', borderRadius: '8px' }}
                           />
                         </Box>
                       )}
@@ -249,21 +249,6 @@ export default function Experience({ experiences, projects, certifications }) {
                           </Tag>
                         ))}
                       </HStack>
-                      {project.projectURL && (
-                        <Button
-                          as="a"
-                          href={project.projectURL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          leftIcon={<FaExternalLinkAlt />}
-                          colorScheme="teal"
-                          variant="outline"
-                          size="sm"
-                          mt={2}
-                        >
-                          View Project
-                        </Button>
-                      )}
                     </Box>
                   </Flex>
                 ))
@@ -354,7 +339,7 @@ export async function getStaticProps() {
       company: 'FIS Global',
       duration: 'June 2022 - Present',
       location: 'Bengaluru, India',
-      imageURL: '/images/fis_global.png',
+      imageURL: '/images/fis.jpeg',
       responsibilities: [
         'Conducted Section 508/WCAG 2.1/2.2 audits for 30+ web and mobile apps in React, Ionic, Angular, and Vue.js, identifying barriers and recommending compliance solutions.',
         'Collaborated with design and development teams to integrate accessibility into the product lifecycle, resulting in a 50% increase in overall accessibility scores.',
@@ -368,7 +353,7 @@ export async function getStaticProps() {
       company: 'Bharat Forge',
       duration: 'Feb 2021 - Oct 2021',
       location: 'Pune, India',
-      imageURL: '/images/bharat_forge.png',
+      imageURL: '/images/bharat_forge.webp',
       responsibilities: [
         'Implemented predictive maintenance solutions with real-time dashboards using Node.js, React, Express, and PostgreSQL, improving asset reliability by 25% and projecting $5-6M in annual savings.',
         'Engineered and launched an automated oxygen delivery device prototype for COVID-19 patients within a 2-week timeframe, integrating 1500+ lines of Arduino code and optimizing oxygen flow efficiency by 40%.',
@@ -415,27 +400,46 @@ export async function getStaticProps() {
 
   const certifications = [
     {
+      certificationName: 'Foundations of User Experience (UX) Design',
+      issuingOrganization: 'Google',
+      issueDate: '2021',
+      certificationURL: 'https://www.coursera.org/account/accomplishments/verify/7MM6UA3QXSCR',
+      certificationImageURL: '/images/google.png',
+    },
+    {
       certificationName: 'Section 508 Trusted Tester',
       issuingOrganization: 'Department of Homeland Security (DHS)',
       issueDate: '2022',
       certificationURL: 'https://www.dhs.gov/trusted-tester',
-      certificationImageURL: '/images/dhs_certification.png',
+      certificationImageURL: '/images/DHS.png',
     },
     {
-      certificationName: 'Android App Development: Accessibility',
-      issuingOrganization: 'LinkedIn Learning',
-      issueDate: '2021',
-      certificationURL:
-        'https://www.linkedin.com/learning/android-app-development-accessibility',
-      certificationImageURL: '/images/android_accessibility_cert.png',
+      certificationName: 'Advanced Usability and Accessibility Practices',
+      issuingOrganization: 'Board Infinity',
+      issueDate: '2025',
+      certificationURL: 'https://www.coursera.org/account/accomplishments/verify/1VORN10NZRP2',
+      certificationImageURL: '/images/board-infinity.png',
     },
     {
-      certificationName: 'iOS App Development: Accessibility',
-      issuingOrganization: 'LinkedIn Learning',
+      certificationName: 'Learn Accessible Web Design',
+      issuingOrganization: 'Scrimba',
+      issueDate: '2025',
+      certificationURL: 'https://www.coursera.org/account/accomplishments/verify/M2TMZMYHVW82',
+      certificationImageURL: '/images/prisma.png',
+    },
+    {
+      certificationName: 'Server-side Development with NodeJS, Express and MongoDB',
+      issuingOrganization: 'The Hong Kong University of Science and Technology',
       issueDate: '2021',
-      certificationURL:
-        'https://www.linkedin.com/learning/ios-app-development-accessibility',
-      certificationImageURL: '/images/ios_accessibility_cert.png',
+      certificationURL:'https://www.coursera.org/account/accomplishments/verify/HJVXWKW7RHV9',
+      certificationImageURL: '/images/Nodejs.png',
+    },
+    {
+      certificationName: 'AWS Certified Cloud Practitioner',
+      issuingOrganization: 'AWS',
+      issueDate: '2023',
+      certificationURL:'https://cp.certmetrics.com/amazon/en/public/verify/credential/WCWQYKZ27EV1QWSZ',
+      certificationImageURL: '/images/aws.png',
     },
   ];
 

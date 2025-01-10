@@ -6,6 +6,7 @@ import FeaturedProjects from '../components/FeaturedProjects'
 import LatestArticle from '../components/LatestArticle'
 import AboutMe from '../components/AboutMe'
 import ContactMe from '../components/ContactMe'
+import ContactForm from '../components/ContactForm'
 
 import { GithubBlog } from '@rena.to/github-blog'
 
@@ -65,7 +66,7 @@ export default function Index({ introduction, projects, articles, contactMe }) {
           <AboutMe />
           <FeaturedProjects projects={projects} />
           <LatestArticle articles={articles} />
-          <ContactMe contactMe={contactMe} />
+          <ContactForm/>
         </Stack>
       </Container>
     </>
