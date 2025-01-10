@@ -66,7 +66,6 @@ export default function Index({ introduction, projects, articles, contactMe }) {
           <AboutMe />
           <FeaturedProjects projects={projects} />
           <LatestArticle articles={articles} />
-          <ContactForm/>
         </Stack>
       </Container>
     </>
