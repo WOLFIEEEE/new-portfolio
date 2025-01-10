@@ -19,7 +19,7 @@ export default function Index({ introduction, projects, articles, contactMe }) {
           <meta content="Khushwant - Accessibility Engineer" name="title" />
           <meta content="WOLFIEEEE, WOLFIEEEE website" name="keywords" />
           <meta
-            content="Software Engineer based in India , an undergraduate student at Universitas Negeri Surabaya."
+            content="Software Engineer based in India. Passionate about building accessible and user-friendly applications."
             name="description"
           />
 
@@ -30,7 +30,7 @@ export default function Index({ introduction, projects, articles, contactMe }) {
             property="og:title"
           />
           <meta
-            content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
+            content="Software Engineer based in India. Passionate about building accessible and user-friendly applications."
             property="og:description"
           />
           <meta
@@ -45,7 +45,7 @@ export default function Index({ introduction, projects, articles, contactMe }) {
             property="twitter:title"
           />
           <meta
-            content="Software Engineer based in Indonesia, an undergraduate student at Universitas Negeri Surabaya."
+            content="Software Engineer based in India. Passionate about building accessible and user-friendly applications."
             property="twitter:description"
           />
           <meta
