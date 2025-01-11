@@ -97,5 +97,6 @@ export async function getStaticProps() {
     props: {
       services: servicesData.edges.map((e) => e.post),
     },
+    revalidate: 60,
   }
 }

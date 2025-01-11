@@ -133,5 +133,6 @@ export async function getStaticProps() {
         )
         .map((e) => e.post),
     },
+    revalidate: 60,
   }
 }

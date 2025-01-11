@@ -159,5 +159,6 @@ export async function getStaticProps() {
           Date.parse(a.post.frontmatter.date),
       ),
     },
+    revalidate: 60,
   }
 }
