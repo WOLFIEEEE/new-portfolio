@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Stack, Heading, Text, SimpleGrid, Divider } from '@chakra-ui/react'
+import { Stack, Heading, Text, SimpleGrid, Divider , WrapItem } from '@chakra-ui/react'
 
 import Cards from '../../components/Card'
 import Container from '../../components/Container'

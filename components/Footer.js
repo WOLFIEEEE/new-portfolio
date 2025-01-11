@@ -122,7 +122,7 @@ import {
             <Text fontWeight="bold">Connect with me</Text>
             <HStack spacing={4}>
               <Tooltip label="LinkedIn" aria-label="LinkedIn">
-                <Link href="https://linkedin.com/in/yourprofile" isExternal>
+                <Link href="https://linkedin.com/in/khushwantparihar" isExternal>
                   <Icon
                     as={FaLinkedin}
                     w={6}
@@ -134,7 +134,7 @@ import {
                 </Link>
               </Tooltip>
               <Tooltip label="GitHub" aria-label="GitHub">
-                <Link href="https://github.com/yourusername" isExternal>
+                <Link href="https://github.com/wolfieeee" isExternal>
                   <Icon
                     as={FaGithub}
                     w={6}
@@ -145,20 +145,8 @@ import {
                   />
                 </Link>
               </Tooltip>
-              <Tooltip label="Twitter" aria-label="Twitter">
-                <Link href="https://twitter.com/yourusername" isExternal>
-                  <Icon
-                    as={FaTwitter}
-                    w={6}
-                    h={6}
-                    color="gray.300"
-                    _hover={{ color: 'blue.300' }}
-                    transition="color 0.3s ease"
-                  />
-                </Link>
-              </Tooltip>
               <Tooltip label="Email" aria-label="Email">
-                <Link href="mailto:your.email@example.com" isExternal>
+                <Link href="mailto:kgpkhushwant1@gmail.com" isExternal>
                   <Icon
                     as={FaEnvelope}
                     w={6}

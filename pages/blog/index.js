@@ -1,10 +1,21 @@
 import { useState } from 'react'
-import { Stack, Heading, Text, Divider, Flex, Box } from '@chakra-ui/react'
+import {
+  Box,
+  Stack,
+  Heading,
+  Text,
+  Divider,
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Link as ChakraLink,
+  useColorModeValue,
+} from '@chakra-ui/react'
 import Head from 'next/head'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import Container from '../../components/Container'
 import { FaSearch } from 'react-icons/fa'
-import { Input, InputGroup, InputRightElement } from '@chakra-ui/input'
 import useMediaQuery from '../../hook/useMediaQuery'
 import dateFormat from 'dateformat'
 
@@ -14,6 +25,14 @@ export default function Index({ posts }) {
   const [query, setQuery] = useState('')
   const handleChange = (e) => setQuery(e.target.value)
   const isLargerThan1024 = useMediaQuery(1024)
+
+  // Color mode values for theming
+  const bgColor = useColorModeValue('white', 'gray.700')
+  const cardBg = useColorModeValue('gray.50', 'gray.800')
+  const cardHover = useColorModeValue('gray.100', 'gray.600')
+  const textColor = useColorModeValue('gray.700', 'gray.200')
+  const secondaryTextColor = useColorModeValue('gray.500', 'gray.400')
+  const linkColor = useColorModeValue('teal.500', 'teal.300')
 
   return (
     <Container>
@@ -49,90 +68,115 @@ export default function Index({ posts }) {
           property="twitter:image"
         />
       </Head>
-      <Stack
-        as="main"
-        alignItems="flex-start"
-        justifyContent="center"
-        my={{ base: '15vh', md: '16vh' }}
-        spacing={5}
-      >
-        <Heading color="displayColor" fontSize={{ base: '4xl', md: '6xl' }}>
-          Blog
-        </Heading>
-        <Text fontSize={{ base: '14px', md: '16px' }}>
-          This is where I share my writings on programming, tutorials, and my
-          experiences.
-        </Text>
-        <InputGroup maxW="400px">
-          <InputRightElement pointerEvents="none">
-            <FaSearch />
-          </InputRightElement>
-          <Input
-            placeholder="Search articles"
-            type="text"
-            value={query}
-            onChange={handleChange}
-          />
-        </InputGroup>
+      <Box as="main" py={{ base: '10', md: '20' }}>
+        {/* Header Section */}
+        <Box textAlign="center" mb={{ base: '8', md: '16' }}>
+          <Heading
+            color="displayColor"
+            fontSize={{ base: '3xl', md: '5xl' }}
+            mb={4}
+          >
+            Blog
+          </Heading>
+          <Text fontSize={{ base: 'md', md: 'lg' }} color={secondaryTextColor}>
+            Explore my latest articles on programming, tutorials, and personal experiences.
+          </Text>
+          <Box mt={8} maxW="400px" mx="auto">
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FaSearch color={secondaryTextColor} />
+              </InputLeftElement>
+              <Input
+                placeholder="Search articles"
+                type="text"
+                value={query}
+                onChange={handleChange}
+                bg={bgColor}
+                border="1px"
+                borderColor={secondaryTextColor}
+                borderRadius="md"
+                _focus={{
+                  borderColor: 'teal.500',
+                  boxShadow: 'outline',
+                }}
+              />
+            </InputGroup>
+          </Box>
+        </Box>
         <Divider />
-        <Stack spacing={5}>
-          {posts
-            .filter((e) =>
-              e.post.title.toLowerCase().includes(query.toLowerCase()),
-            )
-            .map(({ post }) => (
-              <Stack
-                key={post.frontmatter.slug}
-                alignItems="flex-start"
-                justifyContent="flex-start"
-                direction={isLargerThan1024 ? 'row' : 'column'}
-              >
-                <Text
-                  display={isLargerThan1024 ? 'block' : 'none'}
-                  w={100}
-                  color="textSecondary"
-                  textAlign="right"
-                >
-                  {dateFormat(Date.parse(post.frontmatter.date), 'mmm d yyyy')}
-                  <br />{' '}
-                  <Text fontSize="sm" textAlign="right">
-                    {post.frontmatter.readingTime}
-                  </Text>
-                </Text>
-                <Text
-                  display={isLargerThan1024 ? 'none' : 'block'}
-                  color="textSecondary"
-                  fontSize="sm"
-                >
-                  {dateFormat(Date.parse(post.frontmatter.date), 'mmm d yyyy')}{' '}
-                  <Box as="span" fontSize="xs">
-                    &bull;
-                  </Box>{' '}
-                  {post.frontmatter.readingTime}
-                </Text>
-                <Flex direction="column" px={isLargerThan1024 ? 10 : 0}>
-                  <Link href={'/blog/' + post.frontmatter.slug}>
-                    <Text
-                      color="displayColor"
-                      fontSize="xl"
-                      fontWeight="bold"
-                      cursor="pointer"
-                    >
-                      {post.title}
-                    </Text>
-                    <Text color="textSecondary">
-                      {post.frontmatter.summary}
-                    </Text>
-
-                    <Text color="button1" cursor="pointer">
-                      Learn more &rarr;
-                    </Text>
-                  </Link>
-                </Flex>
-              </Stack>
-            ))}
-        </Stack>
-      </Stack>
+        {/* Blog Posts Section */}
+        <Box mt={10}>
+          {posts.filter((e) =>
+            e.post.title.toLowerCase().includes(query.toLowerCase())
+          ).length === 0 ? (
+            <Text textAlign="center" color={secondaryTextColor}>
+              No posts found.
+            </Text>
+          ) : (
+            <Stack spacing={6}>
+              {posts
+                .filter((e) =>
+                  e.post.title.toLowerCase().includes(query.toLowerCase())
+                )
+                .map(({ post }) => (
+                  <Box
+                    key={post.frontmatter.slug}
+                    bg={cardBg}
+                    p={6}
+                    borderRadius="lg"
+                    boxShadow="md"
+                    transition="transform 0.2s, box-shadow 0.2s"
+                    _hover={{
+                      transform: 'translateY(-4px)',
+                      boxShadow: 'xl',
+                      bg: cardHover,
+                    }}
+                  >
+                    <Flex direction="column">
+                      <NextLink href={`/blog/${post.frontmatter.slug}`} passHref>
+                        <ChakraLink>
+                          <Heading
+                            as="h3"
+                            size="lg"
+                            mb={2}
+                            color="displayColor"
+                            _hover={{ textDecoration: 'underline' }}
+                          >
+                            {post.title}
+                          </Heading>
+                        </ChakraLink>
+                      </NextLink>
+                      <Text color={secondaryTextColor} mb={4}>
+                        {post.frontmatter.summary}
+                      </Text>
+                      <Flex
+                        justify="space-between"
+                        align="center"
+                        direction={isLargerThan1024 ? 'row' : 'column'}
+                      >
+                        <Box>
+                          <Text color={secondaryTextColor} fontSize="sm">
+                            {dateFormat(
+                              Date.parse(post.frontmatter.date),
+                              'mmm d, yyyy'
+                            )}
+                            {' • '}
+                            {post.frontmatter.readingTime}
+                          </Text>
+                        </Box>
+                        <NextLink href={`/blog/${post.frontmatter.slug}`} passHref>
+                          <ChakraLink color={linkColor} fontWeight="bold" mt={isLargerThan1024 ? 0 : 2}>
+                            Read More &rarr;
+                          </ChakraLink>
+                        </NextLink>
+                      </Flex>
+                    </Flex>
+                  </Box>
+                ))}
+            </Stack>
+          )}
+        </Box>
+      </Box>
     </Container>
   )
 }
@@ -146,7 +190,7 @@ export async function getStaticProps() {
     query: {
       author: 'WOLFIEEEE',
       type: 'post',
-      state: 'published'
+      state: 'published',
     },
     pager: { limit: 10, offset: 0 },
   })
@@ -156,7 +200,7 @@ export async function getStaticProps() {
       posts: posts.edges.sort(
         (a, b) =>
           Date.parse(b.post.frontmatter.date) -
-          Date.parse(a.post.frontmatter.date),
+          Date.parse(a.post.frontmatter.date)
       ),
     },
     revalidate: 60,

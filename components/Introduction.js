@@ -7,6 +7,7 @@ import {
   Button,
   SlideFade,
   Image,
+  useBreakpointValue,
 } from '@chakra-ui/react'
 import { FaEnvelope, FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa'
 import useMediaQuery from '../hook/useMediaQuery'
@@ -24,6 +25,12 @@ export default function Introduction({ introduction }) {
 
   // URL for the resume download
   const resumeDownloadUrl = '/Khushwant\'s Resume.pdf';
+
+  // Determine the direction of the button stack based on screen size
+  const stackDirection = useBreakpointValue({ base: 'column', md: 'row' })
+
+  // Determine button size based on screen size
+  const buttonSize = useBreakpointValue({ base: 'sm', md: 'md' })
 
   return (
     <Stack
@@ -100,7 +107,7 @@ export default function Introduction({ introduction }) {
         <Text color="textSecondary" fontSize="display3">
           {introduction[0].fields.emoji} {introduction[0].fields.description}
           <br />
-          <Stack isInline spacing={1}>
+          <Stack direction="row" spacing={1} wrap="wrap" alignItems="center">
             <Box>{introduction[1].fields.emoji}</Box>
             <Box>
               {introduction[1].fields.description}{' '}
@@ -128,58 +135,63 @@ export default function Introduction({ introduction }) {
         transition={{ enter: { duration: 0.4, delay: 1.0 } }}
         in={true}
       >
-        
-        <Stack isInline spacing={4} wrap="wrap" alignItems="center">
-        <Link href={resumeDownloadUrl} isExternal>
+        <Stack
+          direction={stackDirection}
+          spacing={4}
+          alignItems="center"
+          w="100%"
+        >
+          <Link href={resumeDownloadUrl} isExternal w="100%">
             <Button
               as="a" // Ensures the button behaves as a link
               pos="static"
               color="white"
               leftIcon={<FaDownload color="#3CCF91" />}
               onClick={() => handleClick('introduction_download_resume')}
-              size={isLargerThan800 ? 'md' : 'sm'}
+              size={buttonSize}
               download // Adds the download attribute
+              w={{ base: '100%', md: 'auto' }} // Full width on mobile
             >
               Download Resume
             </Button>
           </Link>
-          <Link href="https://github.com/WOLFIEEEE" isExternal>
+          <Link href="https://github.com/WOLFIEEEE" isExternal w="100%">
             <Button
               pos="static"
               color="white"
               leftIcon={<FaGithub color="#3CCF91" />}
               onClick={() => handleClick('introduction_github')}
-              size={isLargerThan800 ? 'md' : 'sm'}
+              size={buttonSize}
+              w={{ base: '100%', md: 'auto' }} // Full width on mobile
             >
-              Github
+              GitHub
             </Button>
           </Link>
-          <Link href="https://linkedin.com/in/khushwantparihar" isExternal>
+          <Link href="https://linkedin.com/in/khushwantparihar" isExternal w="100%">
             <Button
               pos="static"
               color="white"
               leftIcon={<FaLinkedin color="#3CCF91" />}
               onClick={() => handleClick('introduction_linkedin')}
-              size={isLargerThan800 ? 'md' : 'sm'}
+              size={buttonSize}
+              w={{ base: '100%', md: 'auto' }} // Full width on mobile
             >
               LinkedIn
             </Button>
           </Link>
-          <Link href="mailto:kgpkhushwant1@gmail.com" isExternal>
+          <Link href="mailto:kgpkhushwant1@gmail.com" isExternal w="100%">
             <Button
               pos="static"
               color="white"
               transition="0.3s"
               leftIcon={<FaEnvelope fill="#3CCF91" />}
               onClick={() => handleClick('introduction_email')}
-              size={isLargerThan800 ? 'md' : 'sm'}
+              size={buttonSize}
+              w={{ base: '100%', md: 'auto' }} // Full width on mobile
             >
               Email
             </Button>
           </Link>
-
-          {/* New Download Resume Button */}
-          
         </Stack>
 
         {/* Note Below the Resume Button */}
