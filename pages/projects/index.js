@@ -10,6 +10,7 @@ import { GithubBlog } from '@rena.to/github-blog'
 
 export default function Projects({ projects }) {
   const [query, setQuery] = useState('')
+  
   const handleChange = (e) => {
     setQuery(e.target.value)
   }
@@ -64,7 +65,6 @@ export default function Projects({ projects }) {
           spacing={10}
         >
           <Stack spacing={5}>
-            {' '}
             <Heading color="displayColor" fontSize={{ base: '4xl', md: '6xl' }}>
               Projects
             </Heading>
@@ -85,7 +85,7 @@ export default function Projects({ projects }) {
             </InputGroup>
             <Divider />
           </Stack>
-          <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={8}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
             {projects
               .filter((e) =>
                 e.title.toLowerCase().includes(query.toLowerCase()),
