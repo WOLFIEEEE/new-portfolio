@@ -77,7 +77,8 @@ export default function Contact() {
             </Text>
             {/* Contact Form */}
             <form
-              name="contact" method="POST" netlify
+              action="https://formspree.io/f/xayllodz"
+              name="contact" method="POST" 
             >
               <Stack spacing={4}>
                 <FormControl id="name" isRequired>
@@ -98,13 +99,17 @@ export default function Contact() {
                     required
                   />
                 </FormControl>
-                <FormControl id="service" isRequired>
-                  <FormLabel>Service</FormLabel>
+                {/* Updated FormControl for Reason for Contact */}
+                <FormControl id="reason">
+                  <FormLabel>Reason for Contact</FormLabel>
                   <Select
-                    placeholder="Select service"
-                    name="service"
-                    required
+                    placeholder="Select reason (optional)"
+                    name="reason"
                   >
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Collaboration">Collaboration</option>
+                    <option value="Support">Support</option>
                     <option value="WordPress Development">WordPress Development</option>
                     <option value="WordPress Plugin Development">WordPress Plugin Development</option>
                     <option value="WordPress Theme Customization">WordPress Theme Customization</option>
@@ -113,9 +118,7 @@ export default function Contact() {
                     <option value="Custom Website Development">Custom Website Development</option>
                     <option value="Accessible UI Designs">Accessible UI Designs</option>
                     <option value="Any Other Services">Any Other Services</option>
-                    <option value="Want to schedule a Meet">Want to Schedule a Meet</option>
-                    <option value="Consultation on Web Technologies">Consultation on Web Technologies</option>
-                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Other">Other</option>
                   </Select>
                 </FormControl>
                 <FormControl id="message" isRequired>
