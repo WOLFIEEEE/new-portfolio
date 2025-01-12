@@ -78,15 +78,22 @@ let client = require('contentful').createClient({
 })
 
 export async function getStaticProps() {
-  let data = await client.getEntries({
-    content_type: 'featuredProjects',
-    order: 'fields.order',
-  })
 
   const blog = new GithubBlog({
     repo: 'WOLFIEEEE/new-portfolio',
     token: process.env.GITHUB_TOKEN,
   })
+
+  let data = await blog.getPosts({
+    query: {
+      author: 'WOLFIEEEE',
+      type: 'featuredproject',
+      state: 'published',
+    },
+    pager: { limit: 3, offset: 0 },
+  })
+
+  
   let data2 = await blog.getPosts({
     query: {
       author: 'WOLFIEEEEE',
@@ -108,7 +115,13 @@ export async function getStaticProps() {
 
   return {
     props: {
-      projects: data.items,
+      projects: data.edges
+      .sort(
+        (a, b) =>
+          Date.parse(b.post.frontmatter.date) -
+          Date.parse(a.post.frontmatter.date),
+      )
+      .map((e) => e.post),
       articles: data2.edges
         .sort(
           (a, b) =>

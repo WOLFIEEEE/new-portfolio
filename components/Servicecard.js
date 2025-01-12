@@ -12,6 +12,8 @@ import {
   Flex,
   VStack,
   HStack,
+  Wrap,
+  WrapItem
 } from '@chakra-ui/react';
 import ReactGA from 'react-ga4';
 import {
@@ -162,9 +164,9 @@ export default function ServiceCard({ imageURL, title, slug, desc, tag = [], sub
             </Stack>
 
             {Tags && (
-              <Stack direction="row" spacing={2}>
+              <Wrap spacing={2}>
                 {Tags}
-              </Stack>
+              </Wrap>
             )}
 
             <Divider borderColor="gray.700" />
